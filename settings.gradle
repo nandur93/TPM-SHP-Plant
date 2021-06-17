@@ -1,0 +1,2 @@
+rootProject.name = "TPM SHP Plant"
+include ':app'
