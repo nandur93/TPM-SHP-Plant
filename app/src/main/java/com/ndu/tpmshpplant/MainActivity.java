@@ -100,9 +100,17 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             goToSetting();
             return true;
+        } else if (id == R.id.action_goto_tpm){
+            goToTpm();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void goToTpm() {
+        Intent settingsIntent = new
+                Intent(MainActivity.this, TpmActivity.class);
+        startActivity(settingsIntent);
     }
 
     private void goToSetting() {

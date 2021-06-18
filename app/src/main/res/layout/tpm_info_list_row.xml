@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal"
+    android:padding="@dimen/dimen_10"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".TpmActivity">
+
+    <ImageView
+        android:id="@+id/iv_Thumbnail"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="2dp"
+        android:contentDescription="@string/img_desc_logo_thumbnail"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_Judul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rv_title"
+                tools:ignore="NestedWeights" />
+
+            <TextView
+                android:id="@+id/tv_Id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rv_article_id"
+                android:textAlignment="textEnd" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_Desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/rv_description" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_Author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/design_default_color_secondary"
+                android:text="@string/rv_author_name"
+                android:textColor="@color/design_default_color_background"
+                tools:ignore="ButtonStyle,NestedWeights" />
+
+            <TextView
+                android:id="@+id/tv_PublishedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="@string/rv_publised_date"
+                android:textAlignment="textEnd"
+                android:textColor="@color/design_default_color_background"
+                tools:ignore="ButtonStyle,RtlCompat" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

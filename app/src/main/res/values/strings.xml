@@ -40,4 +40,26 @@
     <!-- Update Preferences -->
     <string name="update_title">Check for update</string>
     <string name="img_desc_logo_vbn" translatable="false">Logo VBN</string>
+
+    <!-- Storage -->
+    <string name="msg_storage_granted">Storage Granted</string>
+    <string name="msg_storage_denied">Storage Denied</string>
+
+    <!-- Menu -->
+    <string name="action_search">Search</string>
+
+    <!-- Message -->
+    <string name="msg_importing_data_tpm">Importing data Info TPM…</string>
+    <string name="msg_please_wait">Please wait!</string>
+    <string name="msg_canceled">Canceled!</string>
+    <string name="msg_import_complete">Import complete!</string>
+    <string name="msg_no_xml_in_directory">No File.xml file in the directory</string>
+    <string name="msg_import_failed">Import failed!</string>
+    <string name="action_refresh">Refresh Data</string>
+    <string name="img_desc_logo_thumbnail">Thumbnail Icon Info TPM</string>
+    <string name="rv_title">Title</string>
+    <string name="rv_article_id">Article ID: 231193</string>
+    <string name="rv_description">Description</string>
+    <string name="rv_author_name">Author: Nandur93</string>
+    <string name="rv_publised_date">Published: 23–11–93</string>
 </resources>

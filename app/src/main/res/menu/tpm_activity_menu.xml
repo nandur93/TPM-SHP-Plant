@@ -1,0 +1,37 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.tpmshpplant.assetmanagement.rfid.RfidModuleActivity">
+    <!--https://stackoverflow.com/questions/28715765/what-is-orderincategory-in-actionbar-menu-item-why-it-is-use-for-->
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_baseline_search_24_white"
+        android:orderInCategory="10"
+        android:title="@string/action_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_refresh_data_lokal"
+        android:icon="@drawable/ic_baseline_sync_24"
+        android:orderInCategory="12"
+        android:title="@string/action_refresh"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:orderInCategory="11"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom" />
+
+
+    <!--    <item
+            android:id="@+id/action_settings"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:orderInCategory="15"
+            android:title="@string/action_settings"
+            app:showAsAction="never" />-->
+
+</menu>
