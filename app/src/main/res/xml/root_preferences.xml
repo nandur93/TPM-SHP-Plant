@@ -45,7 +45,20 @@
             android:title="Select camera source"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>-->
+    <PreferenceCategory
+        android:title="@string/scan_config_header"
+        app:iconSpaceReserved="false">
 
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/sourceVersion"
+            android:entryValues="@array/sourceValue"
+            android:key="source_file"
+            android:summary="@string/source_summary"
+            android:title="@string/source_title"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:title="@string/about_title">

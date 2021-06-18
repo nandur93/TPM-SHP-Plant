@@ -24,7 +24,7 @@ public class InfoTpm {
 
     // Create table SQL query
     public static final String CREATE_TABLE =
-            "CREATE TABLE " + TABLE_NAME + "("
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
                     + COLUMN_CONTENT_ID + " TEXT PRIMARY KEY,"
                     + COLUMN_ICON_LINK + " TEXT,"
                     + COLUMN_TITLE + " TEXT,"

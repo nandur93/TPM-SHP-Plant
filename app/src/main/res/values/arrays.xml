@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sourceVersion">
+        <item>Internet</item>
+        <item>Local</item>
+    </string-array>
+    <string-array name="sourceValue">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

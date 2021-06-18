@@ -62,4 +62,7 @@
     <string name="rv_description">Description</string>
     <string name="rv_author_name">Author: Nandur93</string>
     <string name="rv_publised_date">Published: 23–11–93</string>
+    <string name="scan_config_header">Source Config</string>
+    <string name="source_summary">Source of file</string>
+    <string name="source_title">Source Of Fiile</string>
 </resources>

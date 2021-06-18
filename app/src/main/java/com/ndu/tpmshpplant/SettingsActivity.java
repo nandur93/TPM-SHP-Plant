@@ -8,6 +8,7 @@ import android.util.Log;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
@@ -46,6 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public static class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
         public static final String KEY_EXPORT_FILE_DIRECTORY = "file_directory";
+        public static final String SOURCE_FILE = "source_file";
         public SharedPreferences sharedPrefs;
         public SharedPreferences.Editor editor;
 
@@ -60,10 +62,22 @@ public class SettingsActivity extends AppCompatActivity {
             Preference prefVersion = findPreference("current_version");
             Preference prefCheckUpdate = findPreference("check_update");
             Preference prefSendFeedback = findPreference("feedback");
+            ListPreference sourceFile = findPreference(SOURCE_FILE);
 
             //update value
             sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
             editor = sharedPrefs.edit();
+
+            if (sourceFile != null) {
+                sourceFile.setValue(sharedPrefs.getString(SOURCE_FILE, "1"));
+                sourceFile.setOnPreferenceChangeListener((preference, newValue) -> {
+                    editor.putString(SOURCE_FILE, newValue.toString());
+                    editor.apply();
+                    return true;
+                });
+            }
+
+            //TODO: delai dalam refresh karena value hanya merubah trigger saja belum merubah path
 
             //getVersionName
             if (prefVersion != null) {

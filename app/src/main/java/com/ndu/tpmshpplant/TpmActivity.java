@@ -31,6 +31,7 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.ndu.tpmshpplant.sqlite.XmlDownloader;
 import com.ndu.tpmshpplant.sqlite.database.DatabaseHelper;
 import com.ndu.tpmshpplant.sqlite.database.model.InfoTpm;
 import com.ndu.tpmshpplant.sqlite.utils.MyDividerItemDecoration;
@@ -65,6 +66,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import ir.androidexception.filepicker.dialog.SingleFilePickerDialog;
 
 import static com.ndu.simpletoaster.SimpleToaster.toaster;
+import static com.ndu.tpmshpplant.SettingsActivity.SettingsFragment.SOURCE_FILE;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_AUTHOR_NAME;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_CONTENT_ID;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_DESCRIPTION;
@@ -129,7 +131,6 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         //Todo: Hidden scanned asset
         infoTpmList.addAll(db.getAllInfoTpm());
@@ -254,14 +255,32 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
                 return true;
 
             case R.id.action_refresh_data_lokal:
-                openFilePicker();
+                String sourceFrom = preferences.getString(SOURCE_FILE, "1");
+                if (sourceFrom.equals("1")) {
+                    fromInternet();
+                } else {
+                    openFilePicker();
+                }
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void fromInternet() {
+        Log.d(TAG, "fromInternet: ");
+        //xmlDownloader
+        XmlDownloader.downloadFile("https://drive.google.com/uc?export=download&id=1Mb-FNbuLX6r9vEQw3XQrK2bpE8y-dq15",
+                new File(getFilesDir().getAbsolutePath() + "/TpmInfoDownload.xml"),
+                this,
+                XML_PATH, getFilesDir().getAbsolutePath() + "/TpmInfoDownload.xml");
+        pullDataAsyncTask task = new pullDataAsyncTask();
+        deleteInfoTpmDatabase();
+        task.execute();
+    }
+
     private void openFilePicker() {
+        Log.d(TAG, "openFilePicker: ");
 //        Intent intentfile = new Intent(Intent.ACTION_OPEN_DOCUMENT);
 //        intentfile.addCategory(Intent.CATEGORY_OPENABLE);
 //        intentfile.setType("text/xml");
@@ -431,8 +450,18 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
                 //InputStream istream = getAssets().open("TpmInfo.xml");
 
                 /*Input from mnt/sdcard*/
-                String pathFile = preferences.getString(XML_PATH, "/storage/emulated/0/Tpm/TpmInfo.xml");
+                String localPathFile = preferences.getString(XML_PATH, "/storage/emulated/0/Tpm/TpmInfo.xml");
+                String internetPathFile = preferences.getString(XML_PATH, "/data/user/0/com.ndu.tpmshpplant/files/TpmInfoDownload.xml");
                 //File file = new File("mnt/sdcard/Asset/AssetUpdate.xml");
+                String pathFile;
+                String resourceFrom = preferences.getString(SOURCE_FILE, "1");
+                if (resourceFrom.equals("1")) {
+                    pathFile = internetPathFile;
+                    Log.d(TAG, "doInBackground: from Internet" + pathFile);
+                } else {
+                    pathFile = localPathFile;
+                    Log.d(TAG, "doInBackground: from Local" + pathFile);
+                }
                 File file = new File(Objects.requireNonNull(pathFile));
                 InputStream inputStreamSd = new FileInputStream(file.getPath());
                 DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
