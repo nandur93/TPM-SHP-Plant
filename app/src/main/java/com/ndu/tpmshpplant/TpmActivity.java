@@ -170,6 +170,7 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
                 editor.putString(COLUMN_PUBLISH_DATE, dtmPublishDate);
                 editor.putInt(COLUMN_READ_STATUS, intReadStatus);
                 editor.apply();
+                goToDetail();
             }
 
             @Override
@@ -190,12 +191,12 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
         preferences.edit().remove(COLUMN_READ_STATUS).apply();
     }
 
-//    private void goToDetail() {
-//        Intent intent;
-//        intent = new
-//                Intent(TpmActivity.this, AssetDetailActivity.class);
-//        startActivity(intent);
-//    }
+    private void goToDetail() {
+        Intent intent;
+        intent = new
+                Intent(TpmActivity.this, DetailActivity.class);
+        startActivity(intent);
+    }
 
     private void runDexter() {
         Dexter.withContext(this)

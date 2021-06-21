@@ -69,12 +69,24 @@ public class SettingsActivity extends AppCompatActivity {
             editor = sharedPrefs.edit();
 
             if (sourceFile != null) {
+                /*https://stackoverflow.com/questions/37707061/getting-the-value-of-an-item-in-the-array*/
+                String[] sourceArray = getResources().getStringArray(R.array.sourceVersion);
+                String src1 = sourceArray[0];
+                String src2 = sourceArray[1];
                 sourceFile.setValue(sharedPrefs.getString(SOURCE_FILE, "1"));
                 sourceFile.setOnPreferenceChangeListener((preference, newValue) -> {
                     editor.putString(SOURCE_FILE, newValue.toString());
                     editor.apply();
                     return true;
                 });
+                String summaryTitle;
+                if (sharedPrefs.getString(SOURCE_FILE, "1").equals("1")) {
+                    summaryTitle = src1;
+                } else {
+                    summaryTitle = src2;
+                }
+                sourceFile.setSummary(summaryTitle);
+                Log.d(TAG, "onCreatePreferences: summaryTitle " + summaryTitle);
             }
 
             //TODO: delai dalam refresh karena value hanya merubah trigger saja belum merubah path

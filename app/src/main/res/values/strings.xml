@@ -64,5 +64,13 @@
     <string name="rv_publised_date">Published: 23–11–93</string>
     <string name="scan_config_header">Source Config</string>
     <string name="source_summary">Source of file</string>
-    <string name="source_title">Source Of Fiile</string>
+    <string name="source_title">Source of file</string>
+    <string name="toast_pick_file_error">Pick File Error</string>
+
+    //PDFRenderer
+    <string name="app_name_with_index">PdfRendererBasic (%1$d/%2$d)</string>
+    <string name="intro_message">This sample demonstrates how to use PdfRenderer to display PDF documents on the screen.</string>
+    <string name="info">Info</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
 </resources>
