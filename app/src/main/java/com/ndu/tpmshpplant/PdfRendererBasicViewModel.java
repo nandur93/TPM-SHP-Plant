@@ -47,7 +47,8 @@ public class PdfRendererBasicViewModel extends AndroidViewModel {
     /**
      * The filename of the PDF.
      */
-    private static final String FILENAME = "sample.pdf";
+//    private static final String FILENAME = "sample.pdf";
+    private static final String FILENAME = "Chapter 1,2,3 & 12 (Rev).pdf";
 //    private static final String FILENAME = "485974_20190326.pdf";
 
     private final MutableLiveData<PageInfo> mPageInfo = new MutableLiveData<>();

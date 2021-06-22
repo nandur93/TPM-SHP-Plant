@@ -7,6 +7,7 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="horizontal"
+    android:background="?android:attr/selectableItemBackground"
     android:padding="@dimen/dimen_10"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".TpmActivity">
@@ -45,7 +46,7 @@
                 android:id="@+id/tv_Id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="@string/rv_article_id"
                 android:textAlignment="textEnd" />
         </LinearLayout>

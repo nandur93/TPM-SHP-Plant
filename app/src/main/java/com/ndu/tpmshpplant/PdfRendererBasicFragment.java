@@ -26,7 +26,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,7 +43,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public class PdfRendererBasicFragment extends Fragment {
 
-    private PdfRendererBasicViewModel mViewModel;
     private PhotoView image;
 
 /*    private final View.OnClickListener mOnClickListener = (view) -> {
@@ -73,12 +71,12 @@ public class PdfRendererBasicFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         // View references.
         image = view.findViewById(R.id.image);
-        final LinearLayout linearLayout = view.findViewById(R.id.linear);
+        image.setOnClickListener(v -> ((DetailActivity) requireActivity()).startMuPDFActivityWithExampleFile());
 /*        final Button buttonPrevious = view.findViewById(R.id.previous);
         final Button buttonNext = view.findViewById(R.id.next);*/
 
         // Bind data.
-        mViewModel = new ViewModelProvider(this).get(PdfRendererBasicViewModel.class);
+        PdfRendererBasicViewModel mViewModel = new ViewModelProvider(this).get(PdfRendererBasicViewModel.class);
         final LifecycleOwner viewLifecycleOwner = getViewLifecycleOwner();
         mViewModel.getPageInfo().observe(viewLifecycleOwner, pageInfo -> {
             if (pageInfo == null) {
@@ -92,38 +90,6 @@ public class PdfRendererBasicFragment extends Fragment {
         });
 
         mViewModel.getPageBitmap().observe(viewLifecycleOwner, image::setImageBitmap);
-/*        mViewModel.getPreviousEnabled().observe(viewLifecycleOwner, buttonPrevious::setEnabled);
-        mViewModel.getNextEnabled().observe(viewLifecycleOwner, buttonNext::setEnabled);
-
-        // Bind events.
-        buttonPrevious.setOnClickListener(mOnClickListener);
-        buttonNext.setOnClickListener(mOnClickListener);*/
-
-        //https://stackoverflow.com/a/12938787/7772358
-        linearLayout.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
-            public void onSwipeTop() {
-                Toast.makeText(getActivity(), "top", Toast.LENGTH_SHORT).show();
-            }
-
-            public void onSwipeRight() {
-                Toast.makeText(getActivity(), "right", Toast.LENGTH_SHORT).show();
-                if (mViewModel != null) {
-                    mViewModel.showPrevious();
-                }
-            }
-
-            public void onSwipeLeft() {
-                Toast.makeText(getActivity(), "left", Toast.LENGTH_SHORT).show();
-                if (mViewModel != null) {
-                    mViewModel.showNext();
-                }
-            }
-
-            public void onSwipeBottom() {
-                Toast.makeText(getActivity(), "bottom", Toast.LENGTH_SHORT).show();
-            }
-
-        });
     }
 
     @Override
@@ -141,5 +107,4 @@ public class PdfRendererBasicFragment extends Fragment {
             Log.d("TAG", "onViewCreated: fitStart");
         }
     }
-
 }

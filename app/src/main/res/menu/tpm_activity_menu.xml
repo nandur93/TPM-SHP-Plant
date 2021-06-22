@@ -20,6 +20,13 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/action_goto_detail"
+        android:icon="@drawable/ic_baseline_sync_24"
+        android:orderInCategory="12"
+        android:title="@string/action_detail"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_baseline_settings_24"
         android:orderInCategory="11"

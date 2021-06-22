@@ -17,21 +17,14 @@
     android:orientation="vertical"
     tools:context=".PdfRendererBasicFragment">
 
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="UselessParent">
-
         <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
             android:adjustViewBounds="true"
             android:contentDescription="@null"
-            android:scaleType="fitStart"/>
-    </LinearLayout>
+            android:layout_marginTop="?attr/actionBarSize"
+            android:scaleType="fitStart" />
     <!--<LinearLayout
         style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"

@@ -1,7 +1,10 @@
 package com.ndu.tpmshpplant;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -12,6 +15,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
+
+import com.artifex.mupdf.viewer.DocumentActivity;
+
+import java.io.File;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -29,6 +36,7 @@ public class DetailActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
+//Disable fragment for a moment
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PdfRendererBasicFragment())
@@ -37,6 +45,27 @@ public class DetailActivity extends AppCompatActivity {
 
         /*OnClick Handling*/
         toolbar.setNavigationOnClickListener(view -> finish());
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().hide();
+//        }
+
+        startMuPDFActivityWithExampleFile();
+
+    }
+
+    //https://www.mupdf.com/docs/android-sdk.html
+    public void startMuPDFActivity(Uri documentUri) {
+        Intent intent = new Intent(this, DocumentActivity.class);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(documentUri);
+        startActivity(intent);
+    }
+
+    public void startMuPDFActivityWithExampleFile() {
+        File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        File file = new File("/data/data/com.ndu.tpmshpplant/cache/Chapter 1,2,3 & 12 (Rev).pdf");
+        Uri uri = Uri.fromFile(file);
+        startMuPDFActivity(uri);
     }
 
     @Override

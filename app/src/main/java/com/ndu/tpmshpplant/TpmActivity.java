@@ -73,7 +73,7 @@ import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_DESCRIPTI
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_ICON_LINK;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_PUBLISH_DATE;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_READ_STATUS;
-import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_THUMBNAIL_LINK;
+import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_ARTICLE_LINK;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_TITLE;
 
 public class TpmActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -155,8 +155,8 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
                 String txtContentId = infoTpm.getTxtContentId();
                 String txtIconLink = infoTpm.getTxtIconLink();
                 String txtTitle = infoTpm.getTxtTitle();
-                String txtDescription = infoTpm.getTxtThumbnail();
-                String txtThumbnail = infoTpm.getTxtThumbnail();
+                String txtDescription = infoTpm.getTxtDescription();
+                String txtArticleLink = infoTpm.getTxtArticleLink();
                 String txtAuthor = infoTpm.getTxtAuthor();
                 String dtmPublishDate = infoTpm.getDtmPublishDate();
                 int intReadStatus = infoTpm.getIntReadStatus();
@@ -165,7 +165,7 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
                 editor.putString(COLUMN_ICON_LINK, txtIconLink);
                 editor.putString(COLUMN_TITLE, txtTitle);
                 editor.putString(COLUMN_DESCRIPTION, txtDescription);
-                editor.putString(COLUMN_THUMBNAIL_LINK, txtThumbnail);
+                editor.putString(COLUMN_ARTICLE_LINK, txtArticleLink);
                 editor.putString(COLUMN_AUTHOR_NAME, txtAuthor);
                 editor.putString(COLUMN_PUBLISH_DATE, dtmPublishDate);
                 editor.putInt(COLUMN_READ_STATUS, intReadStatus);
@@ -185,7 +185,7 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
         preferences.edit().remove(COLUMN_ICON_LINK).apply();
         preferences.edit().remove(COLUMN_TITLE).apply();
         preferences.edit().remove(COLUMN_DESCRIPTION).apply();
-        preferences.edit().remove(COLUMN_THUMBNAIL_LINK).apply();
+        preferences.edit().remove(COLUMN_ARTICLE_LINK).apply();
         preferences.edit().remove(COLUMN_AUTHOR_NAME).apply();
         preferences.edit().remove(COLUMN_PUBLISH_DATE).apply();
         preferences.edit().remove(COLUMN_READ_STATUS).apply();
@@ -262,6 +262,10 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
                 } else {
                     openFilePicker();
                 }
+                return true;
+
+            case R.id.action_goto_detail:
+                goToDetail();
                 return true;
         }
 
@@ -480,7 +484,7 @@ public class TpmActivity extends AppCompatActivity implements SearchView.OnQuery
                         hashMapInfo.put(COLUMN_ICON_LINK, getNodeValue(COLUMN_ICON_LINK, elm));
                         hashMapInfo.put(COLUMN_TITLE, getNodeValue(COLUMN_TITLE, elm));
                         hashMapInfo.put(COLUMN_DESCRIPTION, getNodeValue(COLUMN_DESCRIPTION, elm));
-                        hashMapInfo.put(COLUMN_THUMBNAIL_LINK, getNodeValue(COLUMN_THUMBNAIL_LINK, elm));
+                        hashMapInfo.put(COLUMN_ARTICLE_LINK, getNodeValue(COLUMN_ARTICLE_LINK, elm));
                         hashMapInfo.put(COLUMN_AUTHOR_NAME, getNodeValue(COLUMN_AUTHOR_NAME, elm));
                         hashMapInfo.put(COLUMN_PUBLISH_DATE, getNodeValue(COLUMN_PUBLISH_DATE, elm));
                         hashMapInfo.put(COLUMN_READ_STATUS, getNodeValue(COLUMN_READ_STATUS, elm));

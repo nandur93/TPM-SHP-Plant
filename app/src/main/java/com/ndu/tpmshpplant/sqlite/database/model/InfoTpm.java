@@ -8,7 +8,7 @@ public class InfoTpm {
     public static final String COLUMN_ICON_LINK = "txtIconLink";
     public static final String COLUMN_TITLE = "txtTitle";
     public static final String COLUMN_DESCRIPTION = "txtDescription";
-    public static final String COLUMN_THUMBNAIL_LINK = "txtThumbnail";
+    public static final String COLUMN_ARTICLE_LINK = "txtArticleLink";
     public static final String COLUMN_AUTHOR_NAME = "txtAuthor";
     public static final String COLUMN_READ_STATUS = "intReadStatus";
     public static final String COLUMN_PUBLISH_DATE = "dtmPublishDate";
@@ -17,7 +17,7 @@ public class InfoTpm {
     private String txtIconLink;
     private String txtTitle;
     private String txtDescription;
-    private String txtThumbnail;
+    private String txtArticleLink;
     private String txtAuthor;
     private String dtmPublishDate;
     private int intReadStatus;
@@ -29,7 +29,7 @@ public class InfoTpm {
                     + COLUMN_ICON_LINK + " TEXT,"
                     + COLUMN_TITLE + " TEXT,"
                     + COLUMN_DESCRIPTION + " TEXT,"
-                    + COLUMN_THUMBNAIL_LINK + " TEXT,"
+                    + COLUMN_ARTICLE_LINK + " TEXT,"
                     + COLUMN_AUTHOR_NAME + " TEXT,"
                     + COLUMN_READ_STATUS + " INT,"
                     + COLUMN_PUBLISH_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP"
@@ -43,7 +43,7 @@ public class InfoTpm {
             String txt_icon_link,
             String txt_title,
             String txt_description,
-            String txt_thumbnail,
+            String txt_article_link,
             String txt_author,
             int int_read_status,
             String dtm_publish_date) {
@@ -51,7 +51,7 @@ public class InfoTpm {
         this.txtIconLink = txt_icon_link;
         this.txtTitle = txt_title;
         this.txtDescription = txt_description;
-        this.txtThumbnail = txt_thumbnail;
+        this.txtArticleLink = txt_article_link;
         this.txtAuthor = txt_author;
         this.intReadStatus = int_read_status;
         this.dtmPublishDate = dtm_publish_date;
@@ -77,8 +77,8 @@ public class InfoTpm {
         return COLUMN_DESCRIPTION;
     }
 
-    public static String getColumnThumbnailLink() {
-        return COLUMN_THUMBNAIL_LINK;
+    public static String getColumnArticleLink() {
+        return COLUMN_ARTICLE_LINK;
     }
 
     public static String getColumnAuthorName() {
@@ -125,12 +125,12 @@ public class InfoTpm {
         this.txtDescription = txtDescription;
     }
 
-    public String getTxtThumbnail() {
-        return txtThumbnail;
+    public String getTxtArticleLink() {
+        return txtArticleLink;
     }
 
-    public void setTxtThumbnail(String txtThumbnail) {
-        this.txtThumbnail = txtThumbnail;
+    public void setTxtArticleLink(String txtArticleLink) {
+        this.txtArticleLink = txtArticleLink;
     }
 
     public String getTxtAuthor() {

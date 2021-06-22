@@ -22,7 +22,7 @@ import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_DESCRIPTI
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_ICON_LINK;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_PUBLISH_DATE;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_READ_STATUS;
-import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_THUMBNAIL_LINK;
+import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_ARTICLE_LINK;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.COLUMN_TITLE;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.CREATE_TABLE;
 import static com.ndu.tpmshpplant.sqlite.database.model.InfoTpm.TABLE_NAME;
@@ -93,7 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(TABLE_NAME,
                 new String[]{/*COLUMN_ID, */COLUMN_ICON_LINK, COLUMN_ICON_LINK, COLUMN_TITLE,
-                        COLUMN_DESCRIPTION, COLUMN_THUMBNAIL_LINK, COLUMN_AUTHOR_NAME, COLUMN_READ_STATUS, COLUMN_PUBLISH_DATE},
+                        COLUMN_DESCRIPTION, COLUMN_ARTICLE_LINK, COLUMN_AUTHOR_NAME, COLUMN_READ_STATUS, COLUMN_PUBLISH_DATE},
                 /*COLUMN_ID + "=?",*/
                 COLUMN_CONTENT_ID,
                 new String[]{String.valueOf(code)}, null, null, null, null);
@@ -108,7 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 cursor.getString(cursor.getColumnIndex(COLUMN_ICON_LINK)),
                 cursor.getString(cursor.getColumnIndex(COLUMN_TITLE)),
                 cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION)),
-                cursor.getString(cursor.getColumnIndex(COLUMN_THUMBNAIL_LINK)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_ARTICLE_LINK)),
                 cursor.getString(cursor.getColumnIndex(COLUMN_AUTHOR_NAME)),
                 cursor.getInt(cursor.getColumnIndex(COLUMN_READ_STATUS)),
                 cursor.getString(cursor.getColumnIndex(COLUMN_PUBLISH_DATE)));
@@ -138,7 +138,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 infoTpm.setTxtIconLink(cursor.getString(cursor.getColumnIndex(COLUMN_ICON_LINK)));
                 infoTpm.setTxtTitle(cursor.getString(cursor.getColumnIndex(COLUMN_TITLE)));
                 infoTpm.setTxtDescription(cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION)));
-                infoTpm.setTxtThumbnail(cursor.getString(cursor.getColumnIndex(COLUMN_THUMBNAIL_LINK)));
+                infoTpm.setTxtArticleLink(cursor.getString(cursor.getColumnIndex(COLUMN_ARTICLE_LINK)));
                 infoTpm.setTxtAuthor(cursor.getString(cursor.getColumnIndex(COLUMN_AUTHOR_NAME)));
                 infoTpm.setIntReadStatus(cursor.getInt(cursor.getColumnIndex(COLUMN_READ_STATUS)));
                 infoTpm.setDtmPublishDate(cursor.getString(cursor.getColumnIndex(COLUMN_PUBLISH_DATE)));
@@ -173,7 +173,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 infoTpm.setTxtIconLink(cursor.getString(cursor.getColumnIndex(COLUMN_ICON_LINK)));
                 infoTpm.setTxtTitle(cursor.getString(cursor.getColumnIndex(COLUMN_TITLE)));
                 infoTpm.setTxtDescription(cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION)));
-                infoTpm.setTxtThumbnail(cursor.getString(cursor.getColumnIndex(COLUMN_THUMBNAIL_LINK)));
+                infoTpm.setTxtArticleLink(cursor.getString(cursor.getColumnIndex(COLUMN_ARTICLE_LINK)));
                 infoTpm.setTxtAuthor(cursor.getString(cursor.getColumnIndex(COLUMN_AUTHOR_NAME)));
                 infoTpm.setIntReadStatus(cursor.getInt(cursor.getColumnIndex(COLUMN_READ_STATUS)));
                 infoTpm.setDtmPublishDate(cursor.getString(cursor.getColumnIndex(COLUMN_PUBLISH_DATE)));
@@ -319,7 +319,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_ICON_LINK, Vi.get(COLUMN_ICON_LINK));
         values.put(COLUMN_TITLE, Vi.get(COLUMN_TITLE));
         values.put(COLUMN_DESCRIPTION, Vi.get(COLUMN_DESCRIPTION));
-        values.put(COLUMN_THUMBNAIL_LINK, Vi.get(COLUMN_THUMBNAIL_LINK));
+        values.put(COLUMN_ARTICLE_LINK, Vi.get(COLUMN_ARTICLE_LINK));
         values.put(COLUMN_AUTHOR_NAME, Vi.get(COLUMN_AUTHOR_NAME));
         values.put(COLUMN_READ_STATUS, Vi.get(COLUMN_READ_STATUS));
         values.put(COLUMN_PUBLISH_DATE, Vi.get(COLUMN_PUBLISH_DATE));
@@ -327,7 +327,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        COLUMN_ICON_LINK
 //        COLUMN_TITLE
 //        COLUMN_DESCRIPTION
-//        COLUMN_THUMBNAIL_LINK
+//        COLUMN_ARTICLE_LINK
 //        COLUMN_AUTHOR_NAME
 //        COLUMN_READ_STATUS
 //        COLUMN_PUBLISH_DATE
