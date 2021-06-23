@@ -74,4 +74,6 @@
     <string name="previous">Previous</string>
     <string name="next">Next</string>
     <string name="action_detail">Go to detail</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -39,7 +39,7 @@ public class DetailActivity extends AppCompatActivity {
 //Disable fragment for a moment
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PdfRendererBasicFragment())
+                    .add(R.id.container, new WebViewFragment())
                     .commitNow();
         }
 
@@ -49,7 +49,7 @@ public class DetailActivity extends AppCompatActivity {
 //            getSupportActionBar().hide();
 //        }
 
-        startMuPDFActivityWithExampleFile();
+//        startMuPDFActivityWithExampleFile();
 
     }
 
